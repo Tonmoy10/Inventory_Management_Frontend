@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const EmployeePage = () => {
 
   const [employee, setEmployee] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get('http://localhost:3000/auth/employee')
@@ -16,6 +17,19 @@ const EmployeePage = () => {
         }
       }).catch(err => console.log(err))
   }, [])
+
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3000/auth/delete_employee/${id}`)
+    .then(result => {
+      if(result.data.Status) {
+        // navigate("/dashboard/employee")
+        window.location.reload()
+      }
+      else {
+        alert(result.data.Error)
+      }
+    }).catch(err => console.log(err))
+  }
 
   return (
     <div className="px-5 mt-3">
@@ -49,7 +63,7 @@ const EmployeePage = () => {
                   <td>{e.join_date.split('T')[0]}</td>
                   <td>
                     <Link to={`/dashboard/edit_employee/`+e.id} className='btn btn-outline-info m-1 btn-sm'>Edit</Link >
-                    <button className='btn btn-outline-danger btn-sm'>Delete</button>
+                    <button className='btn btn-outline-danger btn-sm' onClick={() => {handleDelete(e.id)}}>Delete</button>
                   </td>
                 </tr>
               ))
