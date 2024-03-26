@@ -8,6 +8,7 @@ import EmployeePage from './components/EmployeePage'
 import InventoryPage from './components/InventoryPage'
 import AddEmployee from './components/AddEmployee'
 import EditEmployee from './components/EditEmployee'
+import AddItem from './components/AddItem'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/dashboard/logout' element={<HomePage />}></Route>
         <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
         <Route path='/dashboard/edit_employee/:id' element={<EditEmployee />}></Route>
+        <Route path='/dashboard/add_item' element={<AddItem />}></Route>
       </Route>
     </Routes>
     </BrowserRouter>
