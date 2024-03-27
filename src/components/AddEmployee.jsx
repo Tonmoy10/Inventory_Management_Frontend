@@ -115,7 +115,7 @@ const AddEmployee = () => {
                         <input
                             type="date"
                             className="form-control rounded-3"
-                            id="inputDuration"
+                            id="inputDate"
                             autoComplete="off"
                             onChange={(e) =>
                                 setEmployee({ ...employee, join_date: e.target.value })
