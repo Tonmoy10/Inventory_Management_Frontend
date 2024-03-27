@@ -39,12 +39,16 @@ const InventoryPage = () => {
       <Link to="/dashboard/add_item" className="btn btn-success">
         Add Item
       </Link>
+      <Link to="/dashboard/sort_item" className="btn btn-warning m-2">
+        View Stock By Date
+      </Link>
       <div className='mt-3'>
         <table className='table'>
           <thead>
             <tr>
               <th>Name</th>
               <th>Stock</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +58,7 @@ const InventoryPage = () => {
                   <td>{i.item_name}</td>
                   <td>{i.stock+" "}{i.unit}</td>
                   <td>
-                    <Link to={`/dashboard/update_item/` + i.id} className='btn btn-outline-info m-1 btn-sm'>Update</Link >
+                    <Link to={`/dashboard/update_item/` + i.item_id} className='btn btn-outline-info m-1 btn-sm'>Update</Link >
                     <button className='btn btn-outline-danger btn-sm' onClick={() => { handleDelete(i.item_id) }}>Delete</button>
                   </td>
                 </tr>

@@ -9,6 +9,8 @@ import InventoryPage from './components/InventoryPage'
 import AddEmployee from './components/AddEmployee'
 import EditEmployee from './components/EditEmployee'
 import AddItem from './components/AddItem'
+import UpdateItem from './components/UpdateItem'
+import SortedItems from './components/SortedItems'
 
 function App() {
 
@@ -23,7 +25,9 @@ function App() {
         <Route path='/dashboard/logout' element={<HomePage />}></Route>
         <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
         <Route path='/dashboard/edit_employee/:id' element={<EditEmployee />}></Route>
+        <Route path='/dashboard/update_item/:id' element={<UpdateItem />}></Route>
         <Route path='/dashboard/add_item' element={<AddItem />}></Route>
+        <Route path='/dashboard/sort_item' element={<SortedItems />}></Route>
       </Route>
     </Routes>
     </BrowserRouter>

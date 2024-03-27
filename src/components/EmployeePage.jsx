@@ -49,6 +49,7 @@ const EmployeePage = () => {
               <th>Phone</th>
               <th>Address</th>
               <th>Joining Date</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
