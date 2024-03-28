@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 const EditEmployee = () => {
 
-    const {id} = useParams()
+    const { id } = useParams()
 
 
     const [employee, setEmployee] = useState({
@@ -16,37 +16,40 @@ const EditEmployee = () => {
         join_date: ''
     })
 
+    const [error, setError] = useState(null)
+
+
     const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`http://localhost:3000/auth/get_employee/${id}`)
-          .then(result => {
-            console.log(result.data.result[0])
-            setEmployee({
-                ...employee,
-                name: result.data.result[0].name,
-                position: result.data.result[0].position,
-                salary: result.data.result[0].salary,
-                phone: result.data.result[0].phone,
-                address: result.data.result[0].address,
-                join_date: result.data.result[0].join_date
+            .then(result => {
+                console.log(result.data.result[0])
+                setEmployee({
+                    ...employee,
+                    name: result.data.result[0].name,
+                    position: result.data.result[0].position,
+                    salary: result.data.result[0].salary,
+                    phone: result.data.result[0].phone,
+                    address: result.data.result[0].address,
+                    join_date: result.data.result[0].join_date
+                })
             })
-          })
-          .catch(err => console.log(err))
-      }, [])
+            .catch(err => console.log(err))
+    }, [])
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post(`http://localhost:3000/auth/edit_employee/${id}`, employee)
-        .then(result => {
-            if (result.data.Status) {
-                navigate("/dashboard/employee")
-              } else {
-                alert(Result.data.Error)
-              }
-        })
-        .catch(err => console.log(err))
+            .then(result => {
+                if (result.data.Status) {
+                    navigate("/dashboard/employee")
+                } else {
+                    setError(result.data.Error)
+                }
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -62,7 +65,7 @@ const EditEmployee = () => {
                             className="form-control rounded-3"
                             id="inputName"
                             placeholder={employee.name}
-                            style={{backgroundColor:'gainsboro'}}
+                            style={{ backgroundColor: 'gainsboro' }}
                         />
                     </div>
                     <div className="col-12">
@@ -71,7 +74,7 @@ const EditEmployee = () => {
                             type="text"
                             className="form-control rounded-3"
                             id="inputPosition"
-                            placeholder= {employee.position}
+                            placeholder={employee.position}
                             autoComplete="off"
                             onChange={(e) =>
                                 setEmployee({ ...employee, position: e.target.value })
@@ -86,7 +89,7 @@ const EditEmployee = () => {
                             type="int"
                             className="form-control rounded-3"
                             id="inputSalary"
-                            placeholder= {employee.salary}
+                            placeholder={employee.salary}
                             autoComplete="off"
                             onChange={(e) =>
                                 setEmployee({ ...employee, salary: e.target.value })
@@ -101,7 +104,7 @@ const EditEmployee = () => {
                             type="text"
                             className="form-control rounded-3"
                             id="inputPhone"
-                            placeholder= {employee.phone}
+                            placeholder={employee.phone}
                             minLength={11}
                             maxLength={11}
                             autoComplete="off"
@@ -118,7 +121,7 @@ const EditEmployee = () => {
                             type="text"
                             className="form-control rounded-3"
                             id="inputAddress"
-                            placeholder= {employee.address}
+                            placeholder={employee.address}
                             autoComplete="off"
                             onChange={(e) =>
                                 setEmployee({ ...employee, address: e.target.value })
@@ -136,13 +139,16 @@ const EditEmployee = () => {
                             id="inputDuration"
                             placeholder={employee.join_date.split('T')[0]}
                             autoComplete="off"
-                            style={{backgroundColor:'gainsboro'}}
+                            style={{ backgroundColor: 'gainsboro' }}
                         />
                     </div>
                     <div className="col-12">
                         <button type="submit" className="btn btn-primary w-100 mt-2">
                             Update
                         </button>
+                    </div>
+                    <div className='text-danger mt-3'>
+                        <center><strong>{error && error}</strong></center>
                     </div>
                 </form>
             </div>

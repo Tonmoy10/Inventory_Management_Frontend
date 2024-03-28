@@ -14,6 +14,9 @@ const UpdateItem = () => {
     quantity: ''
   })
 
+  const [error, setError] = useState(null)
+
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const UpdateItem = () => {
           // window.location.href("/dashboard/employee")
           navigate("/dashboard/inventory")
         } else {
-          alert(result.data.Error)
+          setError(result.data.Error)
         }
       })
       .catch(err => console.log(err))
@@ -72,6 +75,9 @@ const UpdateItem = () => {
             <button type="submit" className="btn btn-primary w-100 mt-2">
               Update
             </button>
+          </div>
+          <div className='text-danger mt-3'>
+            <center><strong>{error && error}</strong></center>
           </div>
         </form>
       </div>

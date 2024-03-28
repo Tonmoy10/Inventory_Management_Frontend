@@ -9,22 +9,25 @@ const AddItem = () => {
         unit: ''
     })
 
+    const [error, setError] = useState(null)
+
+
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3000/auth/add_item', item)
-        .then(result => {
-            if (result.data.Status) {
-                navigate("/dashboard/inventory")
-              } else {
-                alert(result.data.Error)
-              }
-        })
-        .catch(err => console.log(err))
+            .then(result => {
+                if (result.data.Status) {
+                    navigate("/dashboard/inventory")
+                } else {
+                    setError(result.data.Error)
+                }
+            })
+            .catch(err => console.log(err))
     }
 
-    
+
     return (
         <div className='d-flex justify-content-center align-items-center h-75 top-buffer'>
             <div className='p-3 rounded w-25 border'>
@@ -51,7 +54,7 @@ const AddItem = () => {
                             placeholder="Enter Amount"
                             autoComplete="off"
                             onChange={(e) =>
-                                setItem({ ...item, stock : e.target.value })
+                                setItem({ ...item, stock: e.target.value })
                             }
                         />
                     </div>
@@ -64,7 +67,7 @@ const AddItem = () => {
                             placeholder="Enter Unit"
                             autoComplete="off"
                             onChange={(e) =>
-                                setItem({ ...item, unit : e.target.value })
+                                setItem({ ...item, unit: e.target.value })
                             }
                         />
                     </div>
@@ -72,6 +75,9 @@ const AddItem = () => {
                         <button type="submit" className="btn btn-primary w-100 mt-2">
                             Add Item
                         </button>
+                    </div>
+                    <div className='text-danger mt-3'>
+                        <center><strong>{error && error}</strong></center>
                     </div>
                 </form>
             </div>

@@ -56,17 +56,17 @@ const SortedItems = () => {
               <th>Date</th>
               <th>Name</th>
               <th>Quantity</th>
-              <th></th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {
               item.map(i => (
                 <tr>
-                  <td>{i.date}</td>
+                  <td>{i.date.split("T")[0]}</td>
                   <td>{i.item_name}</td>
-                  <td>{i.quantity+" "}{i.unit}</td>
-                  <td></td>
+                  <td>{(i.quantity< 0 ? i.quantity*-1 : i.quantity)+" "}{i.unit}</td>
+                  <td><em>{i.quantity<0 ? "OUT" : "IN"}</em></td>
                 </tr>
               ))
             }

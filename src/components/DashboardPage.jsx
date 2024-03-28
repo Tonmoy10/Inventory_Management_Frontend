@@ -11,6 +11,7 @@ const DashboardPage = () => {
         axios.get('http://localhost:3000/auth/logout')
             .then(result => {
                 if (result.data.Status) {
+                    localStorage.removeItem("logged")
                     navigate("/login")
                 } else {
                     alert(result.data.Error)
