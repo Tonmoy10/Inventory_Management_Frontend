@@ -13,6 +13,7 @@ import UpdateItem from './components/UpdateItem'
 import SortedItems from './components/SortedItems'
 import axios from 'axios'
 import PrivateRoute from './components/PrivateRoute'
+import AddSales from './components/AddSales'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/dashboard/update_item/:id' element={<UpdateItem />}></Route>
           <Route path='/dashboard/add_item' element={<AddItem />}></Route>
           <Route path='/dashboard/sort_item' element={<SortedItems />}></Route>
+          <Route path='/dashboard/add_sale' element={<AddSales />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

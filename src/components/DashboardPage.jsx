@@ -46,6 +46,12 @@ const DashboardPage = () => {
                                     <span className="ms-2 d-none d-sm-inline">Manage Stock</span>
                                 </Link>
                             </li>
+                            <li className='w-100'>
+                                <Link to={"/dashboard/add_sale"} className="nav-link px-0 align-middle text-white">
+                                    <i className="fs-4 bi-currency-exchange"></i>
+                                    <span className="ms-2 d-none d-sm-inline">Add Sales</span>
+                                </Link>
+                            </li>
                             <li className='w-100' onClick={handleLogout}>
                                 <Link to={"/dashboard"} className="nav-link px-0 align-middle text-white">
                                     <i className="fs-4 bi-power"></i>

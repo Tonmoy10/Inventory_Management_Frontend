@@ -1,5 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Chart from 'chart.js/auto';
+import SalesChart from './SalesChart';
+
 
 const HomePage = () => {
 
@@ -73,6 +76,9 @@ const HomePage = () => {
             <h5>{itemTotal}</h5>
           </div>
         </div>
+      </div>
+      <div className='w-75 p-3 left'>
+      <center><SalesChart /></center>
       </div>
     </div>
   )
