@@ -10,6 +10,7 @@ const AddEmployee = () => {
         position: '',
         salary: '',
         phone: '',
+        nid: '',
         address: '',
         join_date: ''
     })
@@ -92,6 +93,23 @@ const AddEmployee = () => {
                             autoComplete="off"
                             onChange={(e) =>
                                 setEmployee({ ...employee, phone: e.target.value })
+                            }
+                        />
+                    </div>
+                    <div className="col-12">
+                        <label for="inputNid" className="form-label">
+                            NID Number
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control rounded-3"
+                            id="inputNid"
+                            placeholder="XXXXXXXXXX"
+                            minLength={10}
+                            maxLength={10}
+                            autoComplete="off"
+                            onChange={(e) =>
+                                setEmployee({ ...employee, nid: e.target.value })
                             }
                         />
                     </div>

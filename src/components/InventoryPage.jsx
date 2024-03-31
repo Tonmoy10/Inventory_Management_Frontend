@@ -43,7 +43,7 @@ const InventoryPage = () => {
         View Stock By Date
       </Link>
       <div className='mt-3'>
-        <table className='table'>
+        <table className='table table-striped'>
           <thead>
             <tr>
               <th>Name</th>

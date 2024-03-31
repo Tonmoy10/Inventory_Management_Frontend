@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom'
 
 const AddSales = () => {
 
-    const [sale, setSale] = useState({
-        sale: ''
+    const [sales, setSale] = useState({
+        sale: '',
+        expense: ''
     })
 
     const [error, setError] = useState(null)
@@ -16,7 +17,7 @@ const AddSales = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/auth/add_sale', sale)
+        axios.post('http://localhost:3000/auth/add_sale', sales)
             .then(result => {
                 if (result.data.Status) {
                     navigate("/dashboard")
@@ -29,16 +30,27 @@ const AddSales = () => {
     return (
         <div className='d-flex justify-content-center align-items-center h-75 top-buffer'>
             <div className='p-3 rounded w-25 border bg-light'>
-                <h4><center>Add Today's Sale</center></h4>
+                <h4><center>Add Today's Cash Flow</center></h4>
                 <form className="row g-1" onSubmit={handleSubmit}>
                     <div className="col-12">
-                        <label for="inputSale" className="form-label"></label>
+                        <label for="inputSale" className="form-label">Sell</label>
                         <input
                             type="text"
                             className="form-control rounded-3"
                             id="inputSale"
                             onChange={(e) =>
-                                setSale({ ...sale, sale: e.target.value })
+                                setSale({ ...sales, sale: e.target.value })
+                            }
+                        />
+                    </div>
+                    <div className="col-12">
+                        <label for="inputExpense" className="form-label">Expense</label>
+                        <input
+                            type="text"
+                            className="form-control rounded-3"
+                            id="inputExpense"
+                            onChange={(e) =>
+                                setSale({ ...sales, expense: e.target.value })
                             }
                         />
                     </div>
