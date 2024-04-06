@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './style.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Logo from "/Images/Logo.jpg"
 
 
 const LoginPage = () => {
@@ -45,6 +46,9 @@ const LoginPage = () => {
 
   return (
     <div className='d-flex justify-content-center align-content-center vh-100 loginPage'>
+      <div>
+        <img src= {Logo}/> 
+      </div>
       <div className='p-3 rounded-4 verticalCenter w-25 h-50 border loginForm'>
         <h2><center>Login Page</center></h2>
         <form onSubmit={handleSubmit}>

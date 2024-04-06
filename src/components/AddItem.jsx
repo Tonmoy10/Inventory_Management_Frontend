@@ -6,7 +6,8 @@ const AddItem = () => {
     const [item, setItem] = useState({
         item_name: '',
         stock: '',
-        unit: ''
+        unit: '',
+        minimum:''
     })
 
     const [error, setError] = useState(null)
@@ -46,7 +47,7 @@ const AddItem = () => {
                         />
                     </div>
                     <div className="col-12">
-                        <label for="inputPosition" className="form-label">Stock</label>
+                        <label for="inputStock" className="form-label">Stock</label>
                         <input
                             type="text"
                             className="form-control rounded-3"
@@ -59,7 +60,7 @@ const AddItem = () => {
                         />
                     </div>
                     <div className="col-12">
-                        <label for="inputName" className="form-label">Unit</label>
+                        <label for="inputUnit" className="form-label">Unit</label>
                         <input
                             type="text"
                             className="form-control rounded-3"
@@ -68,6 +69,19 @@ const AddItem = () => {
                             autoComplete="off"
                             onChange={(e) =>
                                 setItem({ ...item, unit: e.target.value })
+                            }
+                        />
+                    </div>
+                    <div className="col-12">
+                        <label for="inputMin" className="form-label">Unit</label>
+                        <input
+                            type="text"
+                            className="form-control rounded-3"
+                            id="inputMin"
+                            placeholder="Enter Minimum Quantity"
+                            autoComplete="off"
+                            onChange={(e) =>
+                                setItem({ ...item, minimum: e.target.value })
                             }
                         />
                     </div>

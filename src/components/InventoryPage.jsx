@@ -55,7 +55,11 @@ const InventoryPage = () => {
             {
               item.map(i => (
                 <tr>
-                  <td>{i.item_name}</td>
+                  <td>{i.item_name} <br />
+                    <div className='warning'>
+                    {i.stock<=i.minimum ?"Minimum Quanity Reached! Please Re-Order!":""}
+                    </div>
+                  </td>
                   <td>{i.stock+" "}{i.unit}</td>
                   <td>
                     <Link to={`/dashboard/update_item/` + i.item_id} className='btn btn-outline-info m-1 btn-sm'>Update</Link >

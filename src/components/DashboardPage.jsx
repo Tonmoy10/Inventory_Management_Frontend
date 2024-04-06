@@ -2,13 +2,14 @@ import React from "react";
 import axios from "axios";
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import logo2 from "../../public/Images/logo2.jpg"
 
 const DashboardPage = () => {
 
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        axios.get('http://localhost:3000/auth/logout')
+        axios.post('http://localhost:3000/auth/logout')
             .then(result => {
                 if (result.data.Status) {
                     localStorage.removeItem("logged")
@@ -63,7 +64,7 @@ const DashboardPage = () => {
                 </div>
                 <div className='col p-0 m-0'>
                     <div className='p-2 d-flex justify-content-center shadow bg-dark-subtle'>
-                        <div className='head'></div>
+                        <img src= {logo2} className="head"/> 
                     </div>
                     <Outlet />
                 </div>
