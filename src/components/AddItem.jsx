@@ -73,7 +73,7 @@ const AddItem = () => {
                         />
                     </div>
                     <div className="col-12">
-                        <label for="inputMin" className="form-label">Unit</label>
+                        <label for="inputMin" className="form-label">Minimum Quantity</label>
                         <input
                             type="text"
                             className="form-control rounded-3"

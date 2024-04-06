@@ -54,7 +54,7 @@ const EditEmployee = () => {
 
   return (
     <div className='d-flex justify-content-center align-items-center h-75 top-buffer'>
-      <div className='rounded w-50 border item1 m-2'>
+      <div className='rounded w-50 border m-2'>
         <h6><center>Update Employee Info</center></h6>
         <form onSubmit={handleSubmit}>
           <div className='p-3 d-flex justify-content-around'>
